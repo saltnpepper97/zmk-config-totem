@@ -67,7 +67,11 @@ label= "BASE"                              ;
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //             ┃     A     ┃     R     ┃     S     ┃     T     ┃     G     ┃   ┃     M     ┃     N     ┃     E     ┃     I     ┃     O     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+<<<<<<< HEAD
 // ┃    ESC    ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃    BSPC   ┃
+=======
+// ┃    ESC    ┃     Z     ┃     X     ┃     C     ┃     D     ┃     V     ┃   ┃     K     ┃     H     ┃     ,     ┃     .     ┃     /     ┃    BSPC   ┃
+>>>>>>> f993167 (updated zmk config for first round of testing)
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃    TAB    ┃           ┃    SPC    ┃   ┃   ENTER   ┃           ┃     '     ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -76,7 +80,11 @@ label= "BASE"                              ;
 
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SEMI
                 &mt LGUI A  &mt LALT R  &mt LCTRL S &mt LSHFT T &kp G           &kp M       &mt RSHFT N &mt RCTRL E &mt RALT I  &mt RGUI O
+<<<<<<< HEAD
     &kp ESC     &kp Z       &kp X       &kp C       &kp V       &kp B           &kp K       &kp H       &kp COMMA   &kp DOT     &kp FSLH    &kp BSPC
+=======
+    &kp ESC     &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       &kp COMMA   &kp DOT     &kp FSLH    &kp BSPC
+>>>>>>> f993167 (updated zmk config for first round of testing)
                                         &kp TAB     &mo NAV     &kp SPACE       &kp RET     &mo SYM     &kp APOS
                         >;
                 };
@@ -115,19 +123,32 @@ label= "NAVI"                              ;
 label= "SYM"                               ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+<<<<<<< HEAD
 //             ┃     #     ┃     $     ┃     {     ┃     }     ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
 //             ┃     !     ┃     @     ┃     [     ┃     ]     ┃     \     ┃   ┃           ┃   LEFT    ┃   DOWN    ┃    UP     ┃   RIGHT   ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃     ~     ┃     %     ┃     ^     ┃     (     ┃           ┃     _     ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃
+=======
+//             ┃     #     ┃     $     ┃     {     ┃     }     ┃     `     ┃   ┃     \     ┃           ┃           ┃           ┃           ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃     !     ┃     @     ┃     [     ┃     ]     ┃     &     ┃   ┃     |     ┃   LEFT    ┃   DOWN    ┃    UP     ┃   RIGHT   ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃     ~     ┃     %     ┃     ^     ┃     (     ┃    )      ┃     _     ┃   ┃          ┃           ┃           ┃           ┃           ┃           ┃
+>>>>>>> f993167 (updated zmk config for first round of testing)
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
+<<<<<<< HEAD
                 &kp HASH    &kp DLLR    &kp LBRC    &kp RBRC    &kp PIPE        &none       &kp AMPS    &none       &none       &none      
                 &kp EXCL    &kp AT      &kp LBKT    &kp RBKT    &kp BSLH        &kp GRAVE   &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT
+=======
+                &kp HASH    &kp DLLR    &kp LBRC    &kp RBRC    &kp GRAVE       &kp BSLH    &kp AMPS    &none       &none       &none      
+                &kp EXCL    &kp AT      &kp LBKT    &kp RBKT    &kp AMPS        &kp PIPE    &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT
+>>>>>>> f993167 (updated zmk config for first round of testing)
     &kp TILDE   &kp PRCNT   &kp CARET   &kp LPAR    &kp RPAR    &kp UNDER       &none       &none       &none       &none       &none       &trans         
                                         &trans      &trans      &trans          &trans      &trans      &trans      
                         >;
