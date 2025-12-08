@@ -30,6 +30,16 @@
 };
     
 / {
+
+    behaviors {
+        tri_layer: tri_layer {
+            compatible = "zmk,behavior-tri-layer";
+            layer-one = <NAV>;
+            layer-two = <SYM>;
+            layer-three = <ADJ>;
+        };
+    };
+
      combos {
             compatible = "zmk,combos";
             combo_game_toggle {
