@@ -90,19 +90,19 @@ label= "NAVI"                              ;
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃           ┃           ┃     UP    ┃           ┃           ┃   ┃     +     ┃     7     ┃     8     ┃     9     ┃     *     ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃           ┃   ┃     0     ┃     4     ┃     5     ┃     6     ┃     /     ┃
+//             ┃           ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃           ┃   ┃     -     ┃     4     ┃     5     ┃     6     ┃     /     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃     .     ┃     1     ┃     2     ┃     3     ┃     =     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃           ┃           ┃           ┃
+//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃           ┃           ┃     0     ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &none       &bt BT_CLR  &kp UP      &none       &none           &kp KP_PLUS  &kp N7      &kp N8     &kp N9      &kp KP_MULTIPLY
-                &none       &kp LEFT    &kp DOWN    &kp RIGHT   &none           &kp N0       &kp N4      &kp N5      &kp N6      &kp KP_DIVIDE
-    &trans      &none       &none       &none       &none       &none           &kp PERIOD   &kp N1      &kp N2      &kp N3      &kp KP_MINUS &kp KP_EQUAL       
-                                        &trans      &trans      &trans          &trans       &trans      &trans      
+                &none       &kp LEFT    &kp DOWN    &kp RIGHT   &none           &kp KP_MINU  &kp N4      &kp N5      &kp N6      &kp KP_DIVIDE
+    &trans      &none       &none       &none       &none       &none           &kp PERIOD   &kp N1      &kp N2      &kp N3      &kp KP_EQUAL &trans
+                                        &trans      &trans      &trans          &trans       &trans      &kp N0      
                         >;
                 };
 
