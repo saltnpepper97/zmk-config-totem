@@ -23,22 +23,21 @@
 #define GAME 4
 
 &mt {
-  quick-tap-ms = <220>;
+  quick-tap-ms = <180>;
   global-quick-tap;
   flavor = "tap-preferred";
-  tapping-term-ms = <220>;
+  tapping-term-ms = <180>;
 };
     
 / {
+    conditional_layers {
+         compatible = "zmk,conditional-layers";
 
-    behaviors {
-        tri_layer: tri_layer {
-            compatible = "zmk,behavior-tri-layer";
-            layer-one = <NAV>;
-            layer-two = <SYM>;
-            layer-three = <ADJ>;
-        };
-    };
+         tri_layer {
+            if-layers = <1 2>;
+             then-layer = <3>;
+         };
+     };
 
      combos {
             compatible = "zmk,combos";
