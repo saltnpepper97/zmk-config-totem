@@ -183,4 +183,5 @@ label= "GAME"                             ;
                                         &kp LALT    &none       &kp SPACE       &kp RET     &kp BSPC    &none    
                         >;
                 };
-
+        };
+};
