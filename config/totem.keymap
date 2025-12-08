@@ -33,8 +33,8 @@
      combos {
             compatible = "zmk,combos";
             combo_game_toggle {
-                timeout-ms = <200>;
-                key-positions = <0 14>;
+                timeout-ms = <80>;
+                key-positions = <9 10>;
                 bindings = <&tog GAME>;
             };
     };
@@ -88,21 +88,21 @@ label= "BASE"                              ;
 label= "NAVI"                              ;
 // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-//             ┃           ┃           ┃     UP    ┃           ┃           ┃   ┃     +     ┃     7     ┃     8     ┃     9     ┃     /     ┃
+//             ┃           ┃           ┃     UP    ┃           ┃           ┃   ┃     +     ┃     7     ┃     8     ┃     9     ┃     *     ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃           ┃   ┃     -     ┃     4     ┃     5     ┃     6     ┃     -     ┃
+//             ┃           ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃           ┃   ┃     0     ┃     4     ┃     5     ┃     6     ┃     /     ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃     .     ┃     1     ┃     2     ┃     3     ┃     =     ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃           ┃     0     ┃           ┃
+//                                     ┃           ┃    TAB    ┃    SPC    ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-                &none       &bt BT_CLR  &kp UP      &none       &none           &kp KP_PLUS  &kp N7      &kp KP_N8   &kp N9      &kp KP_MULTIPLY
-                &none       &kp LEFT    &kp DOWN    &kp RIGHT   &none           &kp KP_MINUS &kp N4      &kp N5      &kp N6      &kp KP_MULTIPLY
-    &trans      &none       &none       &none       &none       &none           &kp PERIOD   &kp N1      &kp N2      &kp N3      &kp KP_EQUAL &trans      
-                                        &trans      &trans      &trans          &trans       &kp KP_N0   &trans      
+                &none       &bt BT_CLR  &kp UP      &none       &none           &kp KP_PLUS  &kp N7      &kp N8      &kp N9      &kp KP_MULTIPLY
+                &none       &kp LEFT    &kp DOWN    &kp RIGHT   &none           &kp N0       &kp N4      &kp N5      &kp N6      &kp KP_DIVIDE
+    &trans      &none       &none       &none       &none       &none           &kp PERIOD   &kp N1      &kp N2      &kp N3      &kp KP_MINUS &kp KP_EQUAL       
+                                        &trans      &trans      &trans          &trans       &trans      &trans      
                         >;
                 };
 
