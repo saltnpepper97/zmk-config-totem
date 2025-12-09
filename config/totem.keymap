@@ -52,29 +52,38 @@
         copy_combo {
             timeout-ms = <80>;
             key-positions = <22 23>;
-            bindings = <&kp LCTRL &kp C>;
+            bindings = <&copy_macro>;
         };
 
         paste_combo {
             timeout-ms = <80>;
             key-positions = <23 25>;
-            bindings = <&kp LCTRL &kp V>;
+            bindings = <&paste_macro>;
+        };
+    };
+ 
+    macros {
+        copy_macro: copy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &macro_press   &kp LCTRL
+                &macro_tap     &kp C
+                &macro_release &kp LCTRL
+            >;
+        };
+
+        paste_macro: paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &macro_press   &kp LCTRL
+                &macro_tap     &kp V
+                &macro_release &kp LCTRL
+            >;
         };
     };
 
-    macros {
-        gif: gif {
-            label = "giphy";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp N2>
-                , <&macro_release &kp LSHFT>
-                , <&macro_tap &kp G &kp I &kp F>
-                ;
-        };
-    };
 
         keymap {
                 compatible = "zmk,keymap";
