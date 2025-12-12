@@ -1,0 +1,7 @@
+file_format: "1"
+id: dongle
+name: Dongle (Central)
+type: shield
+requires: [pro_micro]
+features:
+  - keys

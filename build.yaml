@@ -3,4 +3,6 @@ include:
     shield: totem_left
   - board: xiao_ble
     shield: totem_right
+  - board: nice_nano
+    shield: dongle
 # there is no settingsreset (needed) for the XIAO
