@@ -1,0 +1,5 @@
+file_format: "1"
+id: dongle
+name: Dongle (Central)
+type: shield
+description: "ZMK dongle central role device"
