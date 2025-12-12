@@ -1,2 +1,0 @@
-config SHIELD_DONGLE
-    bool "Dongle shield"
