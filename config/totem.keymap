@@ -64,8 +64,8 @@
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L       &kp U       &kp Y       &kp SEMI
-                &mt LGUI A  &mt LALT R  &mt LCTRL S &mt LSHFT T &kp G           &kp H       &mt RSHFT N &mt RCTRL E &mt RALT I  &mt RGUI O
-    &kp ESC     &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp BSPC
+                &mt LGUI A  &mt LALT R  &mt LCTRL S &mt LSHFT T &kp G           &kp M       &mt RSHFT N &mt RCTRL E &mt RALT I  &mt RGUI O
+    &kp ESC     &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H       &kp COMMA   &kp DOT     &kp FSLH    &kp BSPC
                                         &kp TAB     &mo NUM     &kp SPACE       &kp RET     &mo SYM     &kp APOS 
                         >;
                 };
