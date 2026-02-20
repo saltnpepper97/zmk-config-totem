@@ -170,7 +170,7 @@
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃    ESC    ┃   CTRL    ┃     Z     ┃     X     ┃     C     ┃     V     ┃   ┃     B     ┃     N     ┃     M     ┃     ,     ┃     .     ┃     P     ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-//                                     ┃           ┃    GNUM   ┃    SPC    ┃   ┃   ENTER   ┃    BSPC   ┃     '     ┃
+//                                     ┃    ALT    ┃    GNUM   ┃    SPC    ┃   ┃   ENTER   ┃    BSPC   ┃     '     ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
@@ -178,7 +178,7 @@
                 &kp TAB     &kp Q       &kp W       &kp E       &kp R           &kp T       &kp Y       &kp U       &kp I       &kp O
                 &kp LSHFT   &kp A       &kp S       &kp D       &kp F           &kp G       &kp H       &kp J       &kp K       &kp L
     &kp ESC     &kp LCTRL   &kp Z       &kp X       &kp C       &kp V           &kp B       &kp N       &kp M       &kp COMMA   &kp DOT      &kp P        
-                                        &none       &mo GNUM    &kp SPC         &kp RET     &kp BSPC    &kp APOS    
+                                        &kp LALT    &mo GNUM    &kp SPC         &kp RET     &kp BSPC    &kp APOS    
                         >;
                 };
 
