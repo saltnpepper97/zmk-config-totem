@@ -55,10 +55,16 @@ static int battery_telemetry_listener(const zmk_event_t *event) {
 
     struct peripheral_battery_state *battery = &batteries[battery_event->source];
     battery->known = true;
-    battery->level = battery_event->state_of_charge;
 
-    /* ZMK emits level zero when a split peripheral disconnects. */
-    battery->connected = battery_event->state_of_charge > 0;
+    /* ZMK emits level zero when a split peripheral disconnects. Preserve the
+     * last genuine percentage so the host can show useful last-known data.
+     */
+    if (battery_event->state_of_charge == 0) {
+        battery->connected = false;
+    } else {
+        battery->level = battery_event->state_of_charge;
+        battery->connected = true;
+    }
     emit_battery(battery_event->source);
 
     return ZMK_EV_EVENT_BUBBLE;
