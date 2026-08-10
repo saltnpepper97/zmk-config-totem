@@ -38,6 +38,11 @@
                 key-positions = <14 20>;
                 bindings = <&tog GAME>;
             };
+            combo_mute {
+                timeout-ms = <75>;
+                key-positions = <32 37>;
+                bindings = <&kp C_MUTE>;
+            };
     };
 
     conditional_layers {
