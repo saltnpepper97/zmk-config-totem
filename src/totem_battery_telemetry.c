@@ -5,6 +5,7 @@
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
+#include <zephyr/settings/settings.h>
 #include <zephyr/sys/printk.h>
 
 #include <zmk/event_manager.h>
@@ -21,6 +22,49 @@ struct peripheral_battery_state {
 
 static struct peripheral_battery_state
     batteries[CONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS];
+
+#if IS_ENABLED(CONFIG_SETTINGS)
+static uint8_t persisted_levels[ARRAY_SIZE(batteries)];
+
+static int battery_settings_load_cb(const char *name, size_t len, settings_read_cb read_cb,
+                                    void *cb_arg) {
+    const char *next;
+    if (!settings_name_steq(name, "levels", &next) || next) {
+        return -ENOENT;
+    }
+    if (len != sizeof(persisted_levels)) {
+        return -EINVAL;
+    }
+
+    int rc = read_cb(cb_arg, persisted_levels, sizeof(persisted_levels));
+    if (rc < 0) {
+        return rc;
+    }
+
+    for (uint8_t source = 0; source < ARRAY_SIZE(batteries); source++) {
+        if (persisted_levels[source] <= 100 && persisted_levels[source] > 0) {
+            batteries[source].level = persisted_levels[source];
+            batteries[source].known = true;
+        }
+    }
+
+    return 0;
+}
+
+SETTINGS_STATIC_HANDLER_DEFINE(totem_battery, "totem_battery", NULL, battery_settings_load_cb,
+                               NULL, NULL);
+
+static void battery_settings_save_work_handler(struct k_work *work) {
+    ARG_UNUSED(work);
+
+    for (uint8_t source = 0; source < ARRAY_SIZE(batteries); source++) {
+        persisted_levels[source] = batteries[source].known ? batteries[source].level : 0;
+    }
+    settings_save_one("totem_battery/levels", persisted_levels, sizeof(persisted_levels));
+}
+
+K_WORK_DELAYABLE_DEFINE(battery_settings_save_work, battery_settings_save_work_handler);
+#endif
 
 static void emit_battery(uint8_t source) {
     const struct peripheral_battery_state *battery = &batteries[source];
@@ -52,7 +96,7 @@ static int battery_telemetry_listener(const zmk_event_t *event) {
 
     if (battery_event != NULL && battery_event->source < ARRAY_SIZE(batteries)) {
         struct peripheral_battery_state *battery = &batteries[battery_event->source];
-        battery->known = true;
+        bool level_changed = !battery->known || battery->level != battery_event->state_of_charge;
 
         /* ZMK emits level zero when a split peripheral disconnects. Preserve the
          * last genuine percentage so the host can show useful last-known data.
@@ -60,8 +104,14 @@ static int battery_telemetry_listener(const zmk_event_t *event) {
         if (battery_event->state_of_charge == 0) {
             battery->connected = false;
         } else {
+            battery->known = true;
             battery->level = battery_event->state_of_charge;
             battery->connected = true;
+#if IS_ENABLED(CONFIG_SETTINGS)
+            if (level_changed) {
+                k_work_reschedule(&battery_settings_save_work, K_SECONDS(1));
+            }
+#endif
         }
         emit_battery(battery_event->source);
 
