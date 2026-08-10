@@ -1,0 +1,13 @@
+menu "TOTEM extensions"
+
+config TOTEM_BATTERY_TELEMETRY
+    bool "Report split battery levels over the dongle USB console"
+    default y if SHIELD_TOTEM_DONGLE
+    depends on ZMK_SPLIT_ROLE_CENTRAL
+    depends on ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
+    select PRINTK
+    help
+      Emit one compact line for each left/right peripheral battery update and
+      repeat the latest readings once per minute for a host tray application.
+
+endmenu
