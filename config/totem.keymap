@@ -38,11 +38,6 @@
                 key-positions = <14 20>;
                 bindings = <&tog GAME>;
             };
-            combo_mute {
-                timeout-ms = <75>;
-                key-positions = <32 37>;
-                bindings = <&kp C_MUTE>;
-            };
     };
 
     conditional_layers {
@@ -145,7 +140,7 @@
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
 //             ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃           ┃ VOL DOWN  ┃  VOL UP   ┃    P/P    ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+//             ┃           ┃ VOL DOWN  ┃  VOL UP   ┃   MUTE    ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
 // ┃  BT CLEAR ┃  BT_PREV  ┃  BT_NEXT  ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
@@ -155,7 +150,7 @@
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
                 &none       &none        &none        &none       &none          &trans      &kp F7      &kp F8      &kp F9      &kp F12
-                &none       &kp C_VOL_DN &kp C_VOL_UP &kp C_PP    &none          &trans      &kp F4      &kp F5      &kp F6      &kp F11  
+                &none       &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE  &none          &trans      &kp F4      &kp F5      &kp F6      &kp F11
     &bt BT_CLR  &bt BT_PRV  &bt BT_NXT   &none        &none       &none          &trans      &kp F1      &kp F2      &kp F3      &kp F10     &none         
                                          &none        &trans      &none          &none       &trans      &none      
                         >;
