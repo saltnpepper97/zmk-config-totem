@@ -10,4 +10,15 @@ config TOTEM_BATTERY_TELEMETRY
       Emit one compact line for each left/right peripheral battery update and
       repeat the latest readings once per minute for a host tray application.
 
+config TOTEM_BATTERY_HEARTBEAT
+    bool "Repeat each split peripheral battery level"
+    default y if SHIELD_TOTEM_LEFT || SHIELD_TOTEM_RIGHT
+    depends on ZMK_SPLIT
+    depends on !ZMK_SPLIT_ROLE_CENTRAL
+    depends on ZMK_BATTERY_REPORTING
+    help
+      Re-raise the current battery state once per minute so the split central
+      receives a fresh value after reconnecting even when the integer battery
+      percentage has not changed.
+
 endmenu
