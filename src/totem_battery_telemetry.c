@@ -112,8 +112,9 @@ static void telemetry_work_handler(struct k_work *work) {
          * the USB console may reconnect at any time.
          */
         uint8_t fetched_level = 0;
-        if (zmk_split_central_get_peripheral_battery_level(source, &fetched_level) == 0) {
-            update_battery(source, fetched_level, fetched_level > 0);
+        if (zmk_split_central_get_peripheral_battery_level(source, &fetched_level) == 0 &&
+            fetched_level > 0) {
+            update_battery(source, fetched_level, true);
         }
         emit_battery(source);
     }
