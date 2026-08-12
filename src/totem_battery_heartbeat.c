@@ -2,10 +2,9 @@
 
 #include <zephyr/init.h>
 #include <zephyr/kernel.h>
+#include <zephyr/bluetooth/services/bas.h>
 
 #include <zmk/battery.h>
-#include <zmk/event_manager.h>
-#include <zmk/events/battery_state_changed.h>
 
 #define BATTERY_HEARTBEAT_INTERVAL K_MINUTES(1)
 
@@ -17,8 +16,12 @@ static void battery_heartbeat_work_handler(struct k_work *work) {
 
     uint8_t level = zmk_battery_state_of_charge();
     if (level > 0) {
-        raise_zmk_battery_state_changed(
-            (struct zmk_battery_state_changed){.state_of_charge = level});
+        /* The BLE split transport fetches battery data through the standard
+         * Battery Service, not ZMK's split event characteristic. Setting BAS
+         * sends a GATT notification even when the value is unchanged, which
+         * refreshes the central after bonded reconnects.
+         */
+        bt_bas_set_battery_level(level);
     }
 
     k_work_schedule(&battery_heartbeat_work, BATTERY_HEARTBEAT_INTERVAL);
