@@ -18,8 +18,8 @@ config TOTEM_BATTERY_HEARTBEAT
     depends on ZMK_BATTERY_REPORTING
     depends on BT_BAS
     help
-      Re-raise the current battery state once per minute so the split central
-      receives a fresh value after reconnecting even when the integer battery
-      percentage has not changed.
+      Notify the current Battery Service level once per minute so the split
+      central receives a fresh value after reconnecting even when the integer
+      battery percentage has not changed.
 
 endmenu
