@@ -11,6 +11,7 @@
 #include <zmk/event_manager.h>
 #include <zmk/events/battery_state_changed.h>
 #include <zmk/events/position_state_changed.h>
+#include <zmk/split/central.h>
 
 #define TELEMETRY_INTERVAL K_MINUTES(1)
 
@@ -66,6 +67,26 @@ static void battery_settings_save_work_handler(struct k_work *work) {
 K_WORK_DELAYABLE_DEFINE(battery_settings_save_work, battery_settings_save_work_handler);
 #endif
 
+static void update_battery(uint8_t source, uint8_t level, bool connected) {
+    struct peripheral_battery_state *battery = &batteries[source];
+
+    if (level == 0) {
+        battery->connected = false;
+        return;
+    }
+
+    bool level_changed = !battery->known || battery->level != level;
+    battery->known = true;
+    battery->level = level;
+    battery->connected = connected;
+
+#if IS_ENABLED(CONFIG_SETTINGS)
+    if (level_changed) {
+        k_work_reschedule(&battery_settings_save_work, K_SECONDS(1));
+    }
+#endif
+}
+
 static void emit_battery(uint8_t source) {
     const struct peripheral_battery_state *battery = &batteries[source];
 
@@ -84,6 +105,16 @@ static void telemetry_work_handler(struct k_work *work) {
     ARG_UNUSED(work);
 
     for (uint8_t source = 0; source < ARRAY_SIZE(batteries); source++) {
+        /* Read ZMK's authoritative split-central cache. This is the same pair
+         * of fetched peripheral values exposed as GATT proxy characteristics
+         * to tools such as zmk-battery-center. Do not depend solely on our
+         * listener seeing the original event: the tray may start later and
+         * the USB console may reconnect at any time.
+         */
+        uint8_t fetched_level = 0;
+        if (zmk_split_central_get_peripheral_battery_level(source, &fetched_level) == 0) {
+            update_battery(source, fetched_level, fetched_level > 0);
+        }
         emit_battery(source);
     }
 
@@ -95,24 +126,11 @@ static int battery_telemetry_listener(const zmk_event_t *event) {
         as_zmk_peripheral_battery_state_changed(event);
 
     if (battery_event != NULL && battery_event->source < ARRAY_SIZE(batteries)) {
-        struct peripheral_battery_state *battery = &batteries[battery_event->source];
-        bool level_changed = !battery->known || battery->level != battery_event->state_of_charge;
-
         /* ZMK emits level zero when a split peripheral disconnects. Preserve the
          * last genuine percentage so the host can show useful last-known data.
          */
-        if (battery_event->state_of_charge == 0) {
-            battery->connected = false;
-        } else {
-            battery->known = true;
-            battery->level = battery_event->state_of_charge;
-            battery->connected = true;
-#if IS_ENABLED(CONFIG_SETTINGS)
-            if (level_changed) {
-                k_work_reschedule(&battery_settings_save_work, K_SECONDS(1));
-            }
-#endif
-        }
+        update_battery(battery_event->source, battery_event->state_of_charge,
+                       battery_event->state_of_charge > 0);
         emit_battery(battery_event->source);
 
         return ZMK_EV_EVENT_BUBBLE;
