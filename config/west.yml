@@ -2,10 +2,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    # Temporary upstream fix for zmkfirmware/zmk#3156. Pin the reviewed PR
+    # commit so two-peripheral battery discovery cannot suppress key input.
+    - name: zmk-split-discovery-fix
+      url-base: https://github.com/H0N3YC4T
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: zmk-split-discovery-fix
+      revision: 9a4ae7b9220c225f6b5ed891be45fb8dcb583e11
       import: app/west.yml
   self:
     path: config
