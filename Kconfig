@@ -22,4 +22,14 @@ config TOTEM_BATTERY_HEARTBEAT
       central receives a fresh value after reconnecting even when the integer
       battery percentage has not changed.
 
+config TOTEM_BATTERY_DIAGNOSTICS
+    bool "Print the peripheral's measured battery voltage"
+    default n
+    depends on TOTEM_BATTERY_HEARTBEAT
+    select PRINTK
+    help
+      Sample the physical battery sensor and print its measured millivolts and
+      calculated percentage once per minute. Intended for USB diagnostic
+      builds of the left and right halves.
+
 endmenu
