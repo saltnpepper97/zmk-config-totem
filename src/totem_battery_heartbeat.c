@@ -75,10 +75,10 @@ static void battery_heartbeat_work_handler(struct k_work *work) {
 }
 
 static int battery_heartbeat_init(void) {
-    /* ZMK samples the local battery immediately during its own startup. Give
-     * that first sample time to complete before sending our initial repeat.
+    /* The sensor initializes before APPLICATION. Publish a physical reading
+     * promptly so the BAS default cannot linger after a reconnect.
      */
-    k_work_schedule(&battery_heartbeat_work, K_SECONDS(15));
+    k_work_schedule(&battery_heartbeat_work, K_SECONDS(1));
     return 0;
 }
 

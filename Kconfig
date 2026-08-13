@@ -11,16 +11,16 @@ config TOTEM_BATTERY_TELEMETRY
       repeat the latest readings once per minute for a host tray application.
 
 config TOTEM_BATTERY_HEARTBEAT
-    bool "Repeat each split peripheral battery level"
+    bool "Sample and report each split peripheral battery level"
     default y if SHIELD_TOTEM_LEFT || SHIELD_TOTEM_RIGHT
     depends on ZMK_SPLIT
     depends on !ZMK_SPLIT_ROLE_CENTRAL
-    depends on ZMK_BATTERY_REPORTING
+    depends on SENSOR
     depends on BT_BAS
     help
-      Notify the current Battery Service level once per minute so the split
-      central receives a fresh value after reconnecting even when the integer
-      battery percentage has not changed.
+      Sample the physical battery sensor and notify its Battery Service level
+      once per minute so the split central receives fresh data after idle and
+      bonded reconnects.
 
 config TOTEM_BATTERY_DIAGNOSTICS
     bool "Print the peripheral's measured battery voltage"
