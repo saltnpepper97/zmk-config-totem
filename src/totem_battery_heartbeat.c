@@ -54,15 +54,21 @@ static void battery_heartbeat_work_handler(struct k_work *work) {
     }
 #endif
 
-    if (rc == 0 && level > 0) {
+    if (rc == 0) {
         /* The BLE split transport fetches battery data through the standard
          * Battery Service, not ZMK's split event characteristic. Sample the
          * sensor here instead of repeating ZMK's cached percentage: ZMK pauses
          * its own battery timer while idle, which can otherwise preserve a
          * charging-time value indefinitely. Setting BAS sends a notification
          * even when the value is unchanged and refreshes bonded reconnects.
+         *
+         * ZMK's split central also uses level 0 as its disconnected sentinel,
+         * so a real critically-low 0% cannot survive that transport. Report a
+         * 1% floor over BAS to replace a stale value and keep the half marked
+         * connected. Diagnostic output above retains the physical 0% value.
          */
-        bt_bas_set_battery_level(level);
+        uint8_t reported_level = MAX(level, 1);
+        bt_bas_set_battery_level(reported_level);
     }
 
     k_work_schedule(&battery_heartbeat_work, BATTERY_HEARTBEAT_INTERVAL);
